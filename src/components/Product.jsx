@@ -8,25 +8,25 @@ export default function Product(props) {
 
     useEffect(()=>{
         setLoading(true)
-        fetch(`https://fakestoreapi.com/products/${props.id}`)
-            .then(res => res.json())
-            .then(res=>{
-                console.log(res)
-                setData(res)
-                setLoading(false)
-            })
-            .catch(error =>{
-                console.log("FETCH error: ", error)
+        async function Request(){
+            try{
+                let resp = await fetch(`https://fakestoreapi.com/products/${props.id}`)
+                resp = await resp.json()
+                setData(resp)
+            } catch (e){
+                console.log( "request Error ", e)
                 setError("ERRO. Incapaz de carregar informações.")
-                setLoading(false)
-            })
+            }
+            setLoading(false)
+        }
+        Request()
     },[])
 
     
 
     return (
         <div className='product' style={{...props.style}}>
-            { isLoading? "Loading ..." : null }
+            { isLoading? "Carregando ..." : null }
             { (error && !isLoading)? error : null }
             { data? ( 
                 <div>
@@ -34,7 +34,7 @@ export default function Product(props) {
                     <p> <span style={{fontSize:"12px", borderRadius:"10px", backgroundColor:"#aaaaaa", padding:"2px"}}> 
                         {data.category} 
                     </span></p>
-                    <img src={data.image} style={{width:"25vw"}}/>
+                    <img src={data.image} style={{width:"60%"}}/>
                     <p> {data.description}</p>
                     <div style={{display:"flex", justifyContent:"space-between" }}>
                         <span>
