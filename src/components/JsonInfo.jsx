@@ -1,6 +1,6 @@
 import React from "react";
 export default function JsonInfo(props){
-    
+    console.log(props.data)
     const valueStyle = {color:'#3030aa', ...props.valueStyle}
     const keyStyle = {fontWeight:'bold', ...props.valueStyle}
     const listStyle = {...props.listStyle}

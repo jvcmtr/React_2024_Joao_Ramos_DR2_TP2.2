@@ -21,21 +21,26 @@
     flex-direction: column;
     align-items: center;
   }
-  
   .mainGrid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin: 50px;
-  }@media (max-width: 600px) {
-    .mainGrid {
-        grid-template-columns: 1fr; 
-    }
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    gap: 30px;
   }
 
+  img{
+    max-height: 200px;
+    max-width: 200px;
+    aspect-ratio: auto 1 / 1; 
+  }
 
   .card_container{  
     box-shadow: 8px 5px 15px #888888;
+    max-width: 30vw;
+    min-width: 25vw;
+    min-height: 30vh;
+    max-height: 80vh;
     margin-top: 5vh;
     padding: 20px;
     background: white;
